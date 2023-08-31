@@ -59,10 +59,10 @@ public class CoffeeMenuList {
                         System.out.print("가격 입력 : ");
                         int price = sc.nextInt();
                         System.out.println("분류 입력 : ");
-                        String category = sc.nextLine();
+                        String category = sc.next();
                         sc.nextLine();
                         System.out.print("설명 입력 : ");
-                        String description = sc.nextLine();
+                        String description = sc.next();
                         map.put(key, new MenuInfo(key, price, category, description));
                     }
                     break;
@@ -83,10 +83,10 @@ public class CoffeeMenuList {
                         System.out.print("가격 입력 : ");
                         int price = sc.nextInt();
                         System.out.println("분류 입력 : ");
-                        String category = sc.nextLine();
+                        String category = sc.next();
                         sc.nextLine();
                         System.out.print("설명 입력 : ");
-                        String description = sc.nextLine();
+                        String description = sc.next();
                         // 키값은 동일하고 값이 변경되는 경우에 replace() 사용
                         map.replace(key, new MenuInfo(key, price, category, description));
                     } else{
