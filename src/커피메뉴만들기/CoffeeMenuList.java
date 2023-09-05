@@ -1,6 +1,7 @@
 package 커피메뉴만들기;
 // HashMap으로 커피메뉴 리스트 만들기
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class CoffeeMenuList {
     // 문자열로 만들어진 키와 커피의 여러가지 정보가 포함된 객체를 값으로 사용
     static Map<String, MenuInfo> map = new HashMap<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         makeMenu();
         selectMenu();
     }
@@ -20,7 +21,7 @@ public class CoffeeMenuList {
         map.put("Latte", new MenuInfo("Latte", 4000, "Coffee", "우유포함커피"));
     }
 
-    static void selectMenu() {
+    static void selectMenu() throws IOException {
         Scanner sc = new Scanner(System.in);
         String key = ""; // 키를 받기 위한 문자열 변수
         while (true) {
@@ -95,9 +96,14 @@ public class CoffeeMenuList {
                     break;
                 case 6:
                     System.out.println("메뉴를 종료합니다.");
-                    System.exit(0); // 강제 종료
-                default:
-                    System.out.println("선택하신 메뉴가 없습니다.");
+                    FileOutputStream fos = new FileOutputStream("src/커피메뉴만들기/coffee.bin");
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(map);
+                    oos.flush();
+                    oos.close();
+                    fos.close();
+                return;
+                default : System.out.println("선택하신 메뉴가 없습니다.");
 
             }
         }

@@ -50,7 +50,7 @@ public class Board implements Serializable {
         this.date = date;
     }
 
-    public Board(int bno, String title, String content, String writer, Date date) {
+    public Board(int name, String title, String content, String writer, Date date) {
         this.bno = bno;
         this.title = title;
         this.content = content;
